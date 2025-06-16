@@ -7,7 +7,8 @@ while True:
     print("2. View transactions")
     print("3. View Balance")
     print("4. Delete transactions")
-    print("5. Quit")
+    print("5.Filter transactions")
+    print("6. Quit")
 
     choice = input("Choose: ")
 
@@ -20,6 +21,8 @@ while True:
     elif choice == "4":
         finance.delete_transaction(transactions)
     elif choice == "5":
+        finance.filter_transactions(transactions)
+    elif choice == "6":
         break
     else:
         print("Invalid choice")

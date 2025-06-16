@@ -100,4 +100,39 @@ def delete_transaction(transactions):
                 print("❌ Invalid transaction number.")
         except ValueError:
             print("❌ Please enter a valid number.")
+
+def filter_transactions(transactions):
+    if not transactions:
+        print("No transactions to filter.")
+        return
     
+    print("Filter by:")
+    print("1. type (income/expense)")
+    print("2. category")
+    filter_choice = input("Choose filter type (1/2): ").strip()
+    if filter_choice == "1":
+        type_ = input("Enter type (income/expense): ").strip().lower()
+        filtered_transactions = [t for t in transactions if t["type"] == type_]
+        if not filtered_transactions:
+            print(f"No transactions found of type '{type_}'.")
+            return
+        print(f"Transactions of type '{type_}':")
+        for i, transaction in enumerate(filtered_transactions, start=1):
+            sign = "+" if transaction["type"] == "income" else "-"
+            print(f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}")
+
+    elif filter_choice == "2":
+        category = input("Enter category to filter by: ").strip().lower()
+        filtered_transactions = [t for t in transactions if t["category"] == category]
+
+        if not filtered_transactions:
+            print(f"No transactions found in category '{category}'.")
+            return
+
+        print(f"Transactions in category '{category}':")
+        for i, transaction in enumerate(filtered_transactions, start=1):
+            sign = "+" if transaction["type"] == "income" else "-"
+            print(f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}")
+    
+
+
