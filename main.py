@@ -7,8 +7,10 @@ while True:
     print("2. View transactions")
     print("3. View Balance")
     print("4. Delete transactions")
-    print("5.Filter transactions")
-    print("6. Quit")
+    print("5. Filter transactions")
+    print("6. Generate random transaction")
+    print("7. Backup transactions")
+    print("8. Quit")
 
     choice = input("Choose: ")
 
@@ -23,6 +25,10 @@ while True:
     elif choice == "5":
         finance.filter_transactions(transactions)
     elif choice == "6":
+        finance.generate_random_transaction(transactions)
+    elif choice == "7":
+        finance.backup_file()
+    elif choice == "8":
         break
     else:
         print("Invalid choice")

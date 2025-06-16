@@ -1,5 +1,7 @@
 import json
 import os
+import random
+from datetime import datetime
 
 BUDGET_FILE = "budget.json"
 
@@ -9,15 +11,47 @@ def load_transactions():
             return json.load(f)
     return []
 
+def print_date_and_time():
+    now = datetime.now()
+    print(now.strftime("%Y-%m-%d %H:%M:%S"))
+
 def save_transactions(transactions):
     with open(BUDGET_FILE, "w") as f:
         json.dump(transactions, f, indent=2)
+
+def backup_file():
+    print("Files in current dir:")
+    print(os.listdir())
+    if os.path.exists("budget.json"):
+        os.rename("budget.json", "budget_backup.json")
 
 def format_transaction(i, transaction):
     sign = "+" if transaction["type"] == "income" else "-"
     return f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}"
 
+def generate_random_transaction(transactions):
+    print_date_and_time()
+    amount = random.uniform(1, 1000)
+    description = random.choice(["Groceries", "Utilities", "Salary", "Entertainment", "Rent"])
+    category = random.choice(["Food", "Bills", "Experiences", "Leisure"])
+    type_ = random.choice(["income", "expense"])
+
+    transaction = {
+        "amount": round(amount, 2),
+        "description": description,
+        "category": category,
+        "type": type_
+    }
+
+    transactions.append(transaction)
+    try:
+        save_transactions(transactions)
+        print("✅ Random transaction added.")
+    except (IOError, OSError) as e:
+        print(f"❌ Failed to save transaction: {e}")
+
 def add_transaction(transactions):
+    print(datetime.now().strftime("\n%Y-%m-%d %H:%M:%S\n"))
     while True:
         amount_input = input("Enter amount: ")
         try:
@@ -60,6 +94,7 @@ def add_transaction(transactions):
 
 
 def view_transactions(transactions):
+    print_date_and_time()
     if not transactions:
         print("❌ No transactions found.")
         return
@@ -82,6 +117,7 @@ def view_balance(transactions):
 
 
 def delete_transaction(transactions):
+    print_date_and_time()
     view_transactions(transactions)
     if not transactions:
         return
@@ -101,6 +137,7 @@ def delete_transaction(transactions):
             print("❌ Please enter a valid number.")
 
 def filter_transactions(transactions):
+    print_date_and_time()
     if not transactions:
         print("❌ No transactions to filter.")
         return

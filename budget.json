@@ -6,57 +6,57 @@
     "type": "income"
   },
   {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "rent",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "food",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "shop",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "food",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "rent",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "iphone",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "iphone",
-    "type": "income"
-  },
-  {
-    "amount": 400.0,
-    "description": "banana",
-    "category": "food",
+    "amount": 542.23,
+    "description": "Salary",
+    "category": "Bills",
     "type": "expense"
   },
   {
-    "amount": 300.0,
-    "description": "food",
-    "category": "food",
+    "amount": 672.39,
+    "description": "Groceries",
+    "category": "Experiences",
     "type": "expense"
+  },
+  {
+    "amount": 53.28,
+    "description": "Rent",
+    "category": "Leisure",
+    "type": "income"
+  },
+  {
+    "amount": 581.3,
+    "description": "Groceries",
+    "category": "Food",
+    "type": "expense"
+  },
+  {
+    "amount": 762.56,
+    "description": "Salary",
+    "category": "Experiences",
+    "type": "income"
+  },
+  {
+    "amount": 387.32,
+    "description": "Entertainment",
+    "category": "Experiences",
+    "type": "income"
+  },
+  {
+    "amount": 143.57,
+    "description": "Utilities",
+    "category": "Food",
+    "type": "expense"
+  },
+  {
+    "amount": 817.48,
+    "description": "Rent",
+    "category": "Bills",
+    "type": "income"
+  },
+  {
+    "amount": 650.22,
+    "description": "Entertainment",
+    "category": "Leisure",
+    "type": "income"
   }
 ]
