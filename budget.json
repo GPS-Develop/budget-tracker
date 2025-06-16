@@ -58,5 +58,23 @@
     "description": "Entertainment",
     "category": "Leisure",
     "type": "income"
+  },
+  {
+    "amount": 565.18,
+    "description": "Salary",
+    "category": "Experiences",
+    "type": "expense"
+  },
+  {
+    "amount": 168.99,
+    "description": "Rent",
+    "category": "Leisure",
+    "type": "income"
+  },
+  {
+    "amount": 560.29,
+    "description": "Salary",
+    "category": "Food",
+    "type": "expense"
   }
 ]

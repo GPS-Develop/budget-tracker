@@ -1,6 +1,9 @@
-import finance
+from file_io import load_transactions, backup_file
+from transactions import add_transaction, view_transactions, delete_transaction, view_balance
+from filters import filter_transactions
+from randomizer import generate_random_transaction
 
-transactions = finance.load_transactions()
+transactions = load_transactions()
 
 while True:
     print("\n1. Add transaction")
@@ -15,20 +18,21 @@ while True:
     choice = input("Choose: ")
 
     if choice == "1":
-        finance.add_transaction(transactions)
+        add_transaction(transactions)
     elif choice == "2":
-        finance.view_transactions(transactions)
+        view_transactions(transactions)
     elif choice == "3":
-        finance.view_balance(transactions)
+        view_balance(transactions)
     elif choice == "4":
-        finance.delete_transaction(transactions)
+        delete_transaction(transactions)
     elif choice == "5":
-        finance.filter_transactions(transactions)
+        filter_transactions(transactions)
     elif choice == "6":
-        finance.generate_random_transaction(transactions)
+        generate_random_transaction(transactions)
     elif choice == "7":
-        finance.backup_file()
+        backup_file()
     elif choice == "8":
+        print("Exiting the program. Goodbye!")
         break
     else:
         print("Invalid choice")
