@@ -13,6 +13,10 @@ def save_transactions(transactions):
     with open(BUDGET_FILE, "w") as f:
         json.dump(transactions, f, indent=2)
 
+def format_transaction(i, transaction):
+    sign = "+" if transaction["type"] == "income" else "-"
+    return f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}"
+
 def add_transaction(transactions):
     while True:
         amount_input = input("Enter amount: ")
@@ -57,16 +61,11 @@ def add_transaction(transactions):
 
 def view_transactions(transactions):
     if not transactions:
-        print("No transactions found.")
+        print("❌ No transactions found.")
         return
 
     for i, transaction in enumerate(transactions, start=1):
-        if transaction["type"] == "income":
-            sign = "+"
-        else:
-            sign = "-"
-        print(f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}")
-
+        print(format_transaction(i, transaction))
 
 def calculate_balance(transactions):
     balance = 0.0
@@ -94,7 +93,7 @@ def delete_transaction(transactions):
                 deleted_transaction = transactions[index]["category"]
                 del transactions[index]
                 save_transactions(transactions)
-                print(f'{deleted_transaction} deleted.')
+                print(f'✅ {deleted_transaction} deleted.')
                 return
             else:
                 print("❌ Invalid transaction number.")
@@ -103,36 +102,42 @@ def delete_transaction(transactions):
 
 def filter_transactions(transactions):
     if not transactions:
-        print("No transactions to filter.")
+        print("❌ No transactions to filter.")
         return
     
-    print("Filter by:")
+    print("\nFilter by:")
     print("1. type (income/expense)")
     print("2. category")
     filter_choice = input("Choose filter type (1/2): ").strip()
     if filter_choice == "1":
         type_ = input("Enter type (income/expense): ").strip().lower()
-        filtered_transactions = [t for t in transactions if t["type"] == type_]
+
+        filtered_transactions = []
+        for t in transactions:
+            if t["type"] == type_:
+                filtered_transactions.append(t)
+
         if not filtered_transactions:
-            print(f"No transactions found of type '{type_}'.")
+            print(f"❌ No transactions found of type '{type_}'.")
             return
         print(f"Transactions of type '{type_}':")
         for i, transaction in enumerate(filtered_transactions, start=1):
-            sign = "+" if transaction["type"] == "income" else "-"
-            print(f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}")
-
+            print(format_transaction(i, transaction))
     elif filter_choice == "2":
         category = input("Enter category to filter by: ").strip().lower()
-        filtered_transactions = [t for t in transactions if t["category"] == category]
+
+        filtered_transactions = []
+        for t in transactions:
+            if t["category"] == category:
+                filtered_transactions.append(t)
 
         if not filtered_transactions:
-            print(f"No transactions found in category '{category}'.")
+            print(f"❌ No transactions found in category '{category}'.")
             return
 
         print(f"Transactions in category '{category}':")
         for i, transaction in enumerate(filtered_transactions, start=1):
-            sign = "+" if transaction["type"] == "income" else "-"
-            print(f"{i}. {sign}${abs(transaction['amount']):.2f} | {transaction['description']} | {transaction['category']} | {transaction['type']}")
-    
+            print(format_transaction(i, transaction))
+
 
 

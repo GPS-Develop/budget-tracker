@@ -26,12 +26,6 @@
   {
     "amount": 600.0,
     "description": "phone",
-    "category": "shop",
-    "type": "income"
-  },
-  {
-    "amount": 600.0,
-    "description": "phone",
     "category": "food",
     "type": "income"
   },
@@ -56,6 +50,12 @@
   {
     "amount": 400.0,
     "description": "banana",
+    "category": "food",
+    "type": "expense"
+  },
+  {
+    "amount": 300.0,
+    "description": "food",
     "category": "food",
     "type": "expense"
   }
