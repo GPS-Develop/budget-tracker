@@ -9,7 +9,7 @@ def add_transaction(transactions):
             amount = float(amount_input)
             break
         except ValueError:
-            print("❌ Invalid amount. Please enter a numeric value.")
+            print("⚠️ Invalid amount. Please enter a numeric value.")
 
     while True:
         description = input("Enter description: ").strip()
@@ -44,22 +44,27 @@ def add_transaction(transactions):
         print(f"❌ Failed to save transaction: {e}")
 
 def delete_transaction(transactions):
-    print_date_and_time()
-    view_transactions(transactions)
     if not transactions:
+        print("❌ No transactions to delete.")
         return
-
+    
+    view_transactions(transactions)
     while True:
         try:
             index = int(input("Enter the transaction number to delete: ")) - 1
             if 0 <= index < len(transactions):
+                t = transactions[index]
+                confirm = input(f"🗑️  Delete {index + 1}. {t['description']} (${t['amount']}) in {t['category']}? (y/n): ").strip().lower() 
+                if confirm != 'y':
+                    print("❌ Deletion cancelled.")
+                    return  
                 deleted_transaction = transactions[index]["category"]
                 del transactions[index]
                 save_transactions(transactions)
                 print(f'✅ {deleted_transaction} deleted.')
                 return
             else:
-                print("❌ Invalid transaction number.")
+                print("⚠️ Invalid transaction number.")
         except ValueError:
             print("❌ Please enter a valid number.")
 

@@ -6,14 +6,17 @@ from randomizer import generate_random_transaction
 transactions = load_transactions()
 
 while True:
-    print("\n1. Add transaction")
-    print("2. View transactions")
-    print("3. View Balance")
-    print("4. Delete transactions")
-    print("5. Filter transactions")
-    print("6. Generate random transaction")
-    print("7. Backup transactions")
-    print("8. Quit")
+    print("\n📒 Welcome to Budget Tracker CLI")
+    print("-" * 40)
+    print("\n📌 Select an option:\n")
+    print("1️⃣  Add Transaction")
+    print("2️⃣  View Transactions")
+    print("3️⃣  View Balance")
+    print("4️⃣  Delete Transaction")
+    print("5️⃣  Filter Transactions")
+    print("6️⃣  Generate Random Transaction")
+    print("7️⃣  Backup Transactions")
+    print("8️⃣  ❌ Quit\n")
 
     choice = input("Choose: ")
 
@@ -35,4 +38,4 @@ while True:
         print("Exiting the program. Goodbye!")
         break
     else:
-        print("Invalid choice")
+        print("⚠️ Invalid choice")

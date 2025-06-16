@@ -1,11 +1,5 @@
 [
   {
-    "amount": 600.0,
-    "description": "phone",
-    "category": "iphone",
-    "type": "income"
-  },
-  {
     "amount": 542.23,
     "description": "Salary",
     "category": "Bills",
@@ -76,5 +70,11 @@
     "description": "Salary",
     "category": "Food",
     "type": "expense"
+  },
+  {
+    "amount": 100.0,
+    "description": "pay",
+    "category": "job",
+    "type": "income"
   }
 ]

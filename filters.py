@@ -12,8 +12,15 @@ def filter_transactions(transactions):
     print("1. type (income/expense)")
     print("2. category")
     filter_choice = input("Choose filter type (1/2): ").strip()
+    while filter_choice not in ("1", "2"):
+        print("❌ Invalid choice. Please select 1 or 2.")
+        filter_choice = input("Choose filter type (1/2): ").strip()
+        
     if filter_choice == "1":
         type_ = input("Enter type (income/expense): ").strip().lower()
+        while type_ not in ("income", "expense"):
+            print("❌ Type must be 'income' or 'expense'.")
+            type_ = input("Enter type (income/expense): ").strip().lower()
 
         filtered_transactions = []
         for t in transactions:
@@ -26,9 +33,9 @@ def filter_transactions(transactions):
         print(f"Transactions of type '{type_}':")
         for i, transaction in enumerate(filtered_transactions, start=1):
             print(format_transaction(i, transaction))
+            
     elif filter_choice == "2":
         category = input("Enter category to filter by: ").strip().lower()
-
         filtered_transactions = []
         for t in transactions:
             if t["category"].lower() == category:
